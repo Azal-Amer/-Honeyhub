@@ -1,0 +1,246 @@
+* { font-weight: normal; font-family: 'Courier New', Courier, monospace; }
+
+/* Start screen */
+
+#startView {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100vw;
+	height: 100vh;
+	background-color: white;
+	text-align: center;
+	z-index: 1;
+}
+
+#startView h1 {
+	margin-top: 20vh;
+	font-size: 100px;
+	margin-bottom: 5vh;
+	font-family: 'Courier New', Courier, monospace;
+}
+
+#startView h3 {
+	font-size: 20px;
+	margin: 5vh 20vw;
+	color: gray;
+	font-family: 'Courier New', Courier, monospace;
+}
+
+#startButton {
+	border: 2px solid black;
+	border-radius: 10px;
+	font-family: 'Courier New', Courier, monospace;
+	font-size: 30px;
+	padding: 20px;
+	background-color: #ffb829;
+	margin-top: 3vh;
+}
+
+#startButton:hover {
+	border: 5px solid black;
+}
+
+/* Main screens */
+
+.hackerView {
+	width: 43vw;
+	height: 100%;
+	float: left;
+	padding: 30px;
+	background-color: #ffb829;
+	display: flex;
+  flex-direction: column;
+}
+
+.hackerView h3 {
+	font-family: 'Courier New', Courier, monospace;
+	font-size: 20px;
+	font-weight: bold;
+	border-radius: 10px;
+}
+
+.networkView {
+	width: 55vw;
+	height: 100vh;
+	float: right;
+  display: flex;
+  flex-direction: column;
+}
+
+.honeyhubView {
+	background-color: ghostwhite;
+	padding: 15px;
+	width: 43vw;
+	margin-top: 20px;
+	margin-left: -30px;
+}
+
+/* Instructions */
+
+.instructions {
+	font-family: 'Courier New', Courier, monospace;
+	text-align: center;
+	margin-top: 7vh;
+	animation: float 6s ease-in-out infinite;
+}
+
+/* Devices */
+
+.devices {
+  flex:1;
+	text-align: center;
+  overflow:auto;
+}
+
+#honeypot {
+	display: inline-block;
+	margin: 0 auto;
+	padding-left: 30px;
+	width: 200px;
+}
+
+.clickForInfo {
+	border: none;
+	border-radius: 15px;
+	background-color: transparent;
+	margin: 2vh 3vw;
+	z-index: 0;
+}
+
+/* Pop ups */
+.modal {
+	width: 350px;
+	height: 420px;
+  margin: 0 auto;
+	position: relative;
+	margin-top: 100px;
+	border-radius: 20px;
+}
+
+.modal-content {
+	position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+	padding: 20px;
+	border-radius: 20px;
+}
+
+.modal-body {
+	margin: 0;
+	padding: 0;
+	border-radius: 20px;
+	font-family: 'Courier New', Courier, monospace;
+	font-weight: lighter;
+}
+
+/* Animations */
+
+@keyframes pulse {
+  from {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+  }
+
+  50% {
+    -webkit-transform: scale3d(1.05, 1.05, 1.05);
+    transform: scale3d(1.05, 1.05, 1.05);
+  }
+
+  to {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+  }
+}
+
+.clickForInfo img:hover {
+  animation: pulse 1s infinite;
+}
+
+@keyframes float {
+	0% {
+		transform: translatey(0px);
+	}
+	50% {
+		transform: translatey(15px);
+	}
+	100% {
+		transform: translatey(0px);
+	}
+}
+
+/* Interactives */
+.hackerView button {
+	border: 2px solid black;;
+	background-color: white;
+	color: black;
+	padding: 10px;
+	font-size: 15px;
+	border-radius: 10px;
+	margin-bottom: 10px;
+}
+
+#hackerScreen {
+	background-color: black;
+	height: 180px;
+	color: lime;
+	padding: 15px;
+	margin: 10px;
+	margin-top: -5px;
+}
+
+#honeyhubScreen {
+	background-color: black;
+	height: 180px;
+	color: lime;
+	padding: 15px;
+	margin: 10px;
+	margin-top: -5px;
+}
+ /* Dropdown Button */
+.dropbtn {
+  background-color: #3498DB;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+/* Dropdown button on hover & focus */
+.dropbtn:hover, .dropbtn:focus {
+  background-color: #2980B9;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 100px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 0;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: #ddd}
+
+/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+.show {display:block;} 
