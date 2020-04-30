@@ -1,0 +1,342 @@
+* { font-weight: normal; font-family: 'Courier New', Courier, monospace; }
+
+body {
+	min-width: 500px;
+	min-height: 500px;
+}
+
+/* Start screen */
+
+#startView {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100vw;
+	height: 100vh;
+	background-color: white;
+	text-align: center;
+	z-index: 2;
+}
+
+#startView h1 {
+	margin-top: 20vh;
+	font-size: 100px;
+	margin-bottom: 5vh;
+	font-family: 'Courier New', Courier, monospace;
+}
+
+#startView h3 {
+	font-size: 20px;
+	margin: 5vh 20vw;
+	color: gray;
+	font-family: 'Courier New', Courier, monospace;
+}
+
+#startButton {
+	border: 2px solid black;
+	border-radius: 10px;
+	font-family: 'Courier New', Courier, monospace;
+	font-size: 30px;
+	padding: 20px;
+	background-color: #ffb829;
+	margin-top: 3vh;
+}
+
+#startButton:hover {
+	border: 5px solid black;
+}
+
+/* Main screens */
+
+.interaction {
+	width: 50vw;
+	height: 100vh;
+	display: flex;
+  flex-direction: column;
+	z-index: 0;
+	position: absolute;
+	top: 0;
+	left: 0;
+	overflow: auto;
+}
+
+.hackerView {
+	height: 100%;
+	float: left;
+	padding: 30px;
+	background-color: #ffb829;
+	display: flex;
+  flex-direction: column;
+	z-index: 0;
+}
+
+.hackerView h3 {
+	font-family: 'Courier New', Courier, monospace;
+	font-size: 3vh;
+	font-weight: bold;
+	border-radius: 10px;
+}
+
+#gameLevel {
+	font-size: 3vh;
+}
+
+.honeyhubView {
+	background-color: black;
+	padding: 15px;
+	width: 50vw;
+	height: 100%;
+	min-height: 200px;
+	color: #ffb829;
+	display: flex;
+	flex-direction: column;
+	max-height: 30vh;
+}
+
+#networkView {
+	width: 45vw;
+	height: 100vh;
+  display: flex;
+  flex-direction: column;
+	z-index: 0;
+	position: absolute;
+	top: 0;
+	right: 0;
+}
+
+/* Instructions */
+
+.instructions {
+	font-family: 'Courier New', Courier, monospace;
+	text-align: center;
+	top: 7vh;
+	animation: float 6s ease-in-out infinite;
+	margin-top: 7vh;
+	z-index: 0;
+}
+/* Devices */
+
+#devices {
+  flex:1;
+	text-align: center;
+  overflow:auto;
+}
+
+#honeypot {
+	display: inline-block;
+	margin: 0 auto;
+	padding-left: 30px;
+}
+
+.clickForInfo {
+	border: none;
+	border-radius: 15px;
+	background-color: transparent;
+	margin: 2vh 3vw;
+	z-index: 0;
+}
+
+/* Pop ups */
+.modal {
+	width: 350px;
+	height: 420px;
+  margin: 0 auto;
+	position: relative;
+	margin-top: 100px;
+	border-radius: 20px;
+	text-align: center;
+	z-index: 5;
+}
+
+.modal-content {
+	position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+	padding: 20px;
+	border-radius: 20px;
+}
+
+.modal-body {
+	margin: 0;
+	width: 300px;
+	padding: 10px;
+	border-radius: 20px;
+	font-family: 'Courier New', Courier, monospace;
+	font-weight: lighter;
+}
+
+.modal-body p {
+	overflow-wrap: break-word;
+}
+
+.close {
+	margin-top: -25px;
+	margin-bottom: 50px;
+}
+
+.close span {
+	font-size: 50px;
+}
+
+/* Animations */
+
+@keyframes pulse {
+  from {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+  }
+
+  50% {
+    -webkit-transform: scale3d(1.05, 1.05, 1.05);
+    transform: scale3d(1.05, 1.05, 1.05);
+  }
+
+  to {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+  }
+}
+
+.clickForInfo img:hover {
+  animation: pulse 1s infinite;
+}
+
+@keyframes float {
+	0% {
+		transform: translatey(0px);
+	}
+	50% {
+		transform: translatey(15px);
+	}
+	100% {
+		transform: translatey(0px);
+	}
+}
+
+/* Interactives */
+.hackerView button {
+	border: 2px solid black;;
+	background-color: white;
+	color: black;
+	padding: 10px;
+	font-size: 15px;
+	border-radius: 10px;
+	margin-bottom: 10px;
+	margin: 0 auto;
+}
+
+#hackerScreen {
+	background-color: black;
+	height: 100%;
+	color: lime;
+	padding: 15px;
+	margin: 10px;
+	margin-top: -5px;
+}
+
+#hackerScreen input {
+	background-color: black;
+	color: lime;
+  font-family: 'Courier New', Courier, monospace;
+	font-weight: lighter;
+}
+
+#honeyhubScreen {
+	background-color: black;
+	height: 100%;
+	color: lime;
+	padding: 15px;
+	display: block;
+}
+ /* Dropdown Button */
+#myDropdown {
+  margin: 0 auto;
+}
+
+#gameOptions button:hover {
+	background-color: black;
+	color: white;
+}
+#hackerScreen button{
+  background-color: black;
+	color: lime;
+}
+#hackerScreen button:hover{
+  background-color: rgb(39, 37, 37);
+	color: lime;
+}
+#terminalInput {
+  background-color: black;
+	color: lime;
+  font-family: 'Courier New', Courier, monospace;
+	font-weight: lighter;
+	display: none;
+}
+
+.dropdown-item {
+	text-align: center;
+	padding-top: 10px;
+}
+
+.lockedOutAlert {
+	color: red;
+	margin: 10vh 5vw;
+	font-size: 35px;
+	font-weight: bold;
+}
+
+/* For fullscreen */
+#popUpAlert {
+	width: 600px;
+	height: 400px;
+	text-align: center;
+	position: fixed;
+	top: 30vh;
+	left: 30vw;
+	margin: 0 auto;
+	background-color: #ffb829;
+	z-index: 1;
+	display: none;
+	border-radius: 20px;
+	padding: 50px;
+	border: 5px solid black;
+}
+
+#popUpAlert a {
+	font-weight: bold;
+	text-decoration: none;
+	background-color: white;
+	color: black;
+	font-size: 20px;
+}
+
+#popUpAlert h4 {
+	font-size: 25px;
+}
+
+#popUpAlert p {
+	font-size: 20px;
+	margin: 15px;
+}
+
+#overlay {
+  position: fixed;
+  display: none;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.5); 
+}
+
+#consoleBtn {
+	margin: 10px;
+	border: 1px solid white;
+	display: none;
+	pointer-events: none;
+}

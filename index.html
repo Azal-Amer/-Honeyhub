@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<title>Honeyhub</title>
+	<link href="style.css" rel="stylesheet" type="text/css" />
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	 crossorigin="anonymous">
+</head>
+
+<body>
+
+	<!-- Start view -->
+	<div class="starting" id="startView">
+		<h1><strong>HONEYHUB</strong></h1>
+			<h3>Arjun A, Azal A. Bolun T, George L, Michelle L, Saif T</h3>
+			<button id="startButton" onclick="document.getElementById('startView').style.display = 'none';">start</button>
+		</div>
+
+		<!-- Main view -->
+
+		<!-- Interactive options for player -->
+		<div class="interaction">
+			<div class="hackerView">
+
+				<h3>Welcome, hacker. You are trying to hack into Internet of Things devices.</h3>
+				<!-- Describes level -->
+				<p id="gameLevel"></p>
+				<!-- Buttons to choose options -->
+				<div id="gameOptions"></div>
+
+				<!-- Hacker's screen -->
+				<p style="text-align: center; margin-top: 20px;">Hacker Screen</p>
+				
+				<div id="hackerScreen">
+					<input type='text' id='terminalInput' placeholder="HINT: type 'help'"/>
+					<div id="hackerScreenText"></div>
+					<button type="button" id="consoleBtn">Run code</button>
+				</div>
+
+				<!-- Scan IP || I used Bootstrap to make it easier --> 
+				<div class="btn-group" id="ipScanner" style="display: none">
+					<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="myDropdown">
+						IP Scanner
+					</button>
+					<div class="dropdown-menu">
+						<a class="dropdown-item" href="#" id="fridge"></a>
+						<a class="dropdown-item" href="#" id ="assistant"></a>
+						<a class="dropdown-item" href="#" id ="printer"></a>
+						<a class="dropdown-item" href="#" id ="toaster"></a>
+					</div>
+				</div>
+
+			</div>
+
+			<!-- Honeyhub Screen -->
+			<div class="honeyhubView">
+				<p style="text-align: center; margin: 10px;">Honeyhub Screen</p>
+				<div id="honeyhubScreen"></div>
+			</div>
+		
+		</div>
+
+		<!-- Alert feedback -->
+		<!-- Not visible until end of game -->
+		<div id="overlay"></div> 
+		<div id="popUpAlert">
+			<h4><strong>Thank you for trying out the HoneyHub Simulator.</strong></h4>
+			<p>We hope this has helped you understand how the HoneyHub will work.</p>
+      
+			<a href="https://forms.gle/RfFjXcQzxa48xCrL8">Your opinion matters. Consider filling out this form.</a>
+		</div>
+
+		<div id="networkView">
+			<!-- Instructions -->
+			<div class="instructions">
+				<h4><strong>A HoneyHub protected IoT network</strong></h4>
+				<p>Click each device for more info.</p>
+			</div>
+
+			<!-- Devices -->
+			<div id="devices">
+
+				<!-- Fridge -->
+				<button type="button" class="clickForInfo" data-toggle="modal" data-target="#fridgeInfo">
+					<img src="https://static.vecteezy.com/system/resources/previews/000/351/510/non_2x/fridge-vector-icon.jpg" style="width: 15vw" id="fridge">
+				</button>
+
+				<!-- Toaster -->
+
+				<button type="button" class="clickForInfo" data-toggle="modal" data-target="#toasterInfo">
+					<img src="https://www.svgrepo.com/show/47332/toaster.svg" style="width: 10vw" id="toaster">
+				</button>
+
+				<br>
+
+				<!-- Honeyhub -->
+				<button type="button" class="clickForInfo" data-toggle="modal" data-target="#honeypotInfo">
+					<img src="https://i1.wp.com/www.doctorramey.com/wp-content/uploads/2016/01/honey-clip-art-honey.gif?ssl=1" style="width: 20vw" id="honeypot">
+				</button>
+
+				<br>
+
+				<!-- Assistant -->
+
+				<button type="button" class="clickForInfo" data-toggle="modal" data-target="#assistantInfo">
+					<img src="https://image.flaticon.com/icons/svg/1581/1581296.svg" style="width: 10vw" id="assistant">
+				</button>
+
+				<!-- Printer -->
+
+				<button type="button" class="clickForInfo" data-toggle="modal" data-target="#printerInfo">
+					<img src="https://img.icons8.com/plasticine/2x/print.png" style="width: 15vw" id="printer">
+				</button>
+
+			</div>
+
+		</div>
+
+		<!-- Modal pop ups -->
+		<div class="modal" id="fridgeInfo">
+			<div class="modal-content">
+				<div class="modal-body">
+					<!-- description of fridge -->
+					<p><strong>This is a fridge!</strong></p>
+					<p id="fridgeDetails"></p>
+				</div>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+		</div>
+
+		<div class="modal" id="toasterInfo">
+			<div class="modal-content">
+				<div class="modal-body">
+					<!-- description of toaster -->
+					<p><strong>This is a toaster!</strong></p>
+					<p id="toasterDetails"></p>
+				</div>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+		</div>
+
+		<div class="modal" id="honeypotInfo">
+			<div class="modal-content">
+				<div class="modal-body">
+					<!-- description of honeyhub -->
+					<p><strong>This is the Honeyhub!</strong></p>
+					<p id="honeyhubDetails"></p>
+				</div>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+		</div>
+
+		<div class="modal" id="assistantInfo">
+			<div class="modal-content">
+				<div class="modal-body">
+					<!-- description of assistant -->
+					<p><strong>This is a voice assistant!</strong></p>
+					<p id="assistantDetails"></p>
+				</div>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+		</div>
+
+		<div class="modal" id="printerInfo">
+			<div class="modal-content">
+				<div class="modal-body">
+					<!-- description of printer -->
+					<p><strong>This is a printer!</strong></p>
+					<p id="printerDetails"></p>
+				</div>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+		</div>
+
+		<!-- JS embed -->
+    <title>JavaScript - read JSON from URL</title>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <!-- </script>
+      $.getJSON('http://ip-api.com/json', function(data) {
+          console.lot(data)
+      });
+    </script> -->
+    <script src = "SHA256.js"></script>
+    <script src="script.js"></script>
+		<!-- Bootstrap JS -->
+		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+		
+  </body>
+</html>
