@@ -7,7 +7,7 @@ function hashTester(){
 }
 setInterval(hashTester(), 1000)
 loadScript("SHA256.js")
-var level = 3;
+var level = 1;
 var displayGameLevel = document.querySelector('#gameLevel')
 var displayGameOptions = document.querySelector('#gameOptions')
 var displayHackerScreen = document.querySelector('#hackerScreenText')
