@@ -276,9 +276,11 @@ request.open('GET', 'https://api.ipify.org/?format=json', true);
 request.onload = function() {
   if (this.status >= 200 && this.status < 400) {
     // Success!
+    console.log("If you are seeing this, know that your")
     console.log(JSON.parse(this.responseText))
-    var jsonArray;
-    jsonArray.push($("#ip").val();
+    console.log(" would have been blocked by the honeyhub, and be unable to access the network again")
+    var jsonArray = [];
+    jsonArray.push($("#ip").val())
     var myJsonString = JSON.stringify(jsonArray);
   } 
   else {
@@ -289,4 +291,4 @@ request.onerror = function() {
   // There was a connection error of some sort
 };
 request.send();
-console.log(DisplayIPAddress)
+console.log()
