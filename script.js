@@ -35,6 +35,14 @@ usage example:
   )
 */
 
+function loadScript(url)
+{    
+    var head = document.getElementsByTagName('head')[0];
+    var script = document.createElement('script');
+    script.type = 'text/javascript';
+    script.src = url;
+    head.appendChild(script);
+}
 
 
 var ip_count = 0;
@@ -73,7 +81,6 @@ class computer {
     this.deviceOn=true;
     this.terminalLoggedIn = false;
   }
-
   terminal(port) {
 
   }
@@ -94,36 +101,22 @@ class computer {
     }
   }
 
+  keyGener() {
+    var sizeString = this.system_props.file_size.toString();
+    var countString = this.system_props.file_size.toString();
+    var hash = sha256(sizeString)+sha256(countString)
+    return hash
+  }
 }
 
 
 
 
-
-var fridge = new computer(
-  {
-    hostName:"fridge",
-    operatingSystem: 'linux',
-  	open_ports: ['24']
-  },
-  {
-    ssid: "ssid",
-  	pksd: "pksd",
-  	ipv4: [192, 168, 1, 1],
- 		location: "US"
-  },
-  {
-    file_count: 7,
-  	file_size: 33.6,
-  	system_type: 1
-  }
-)
+//actual devices
 
 
 
-
-
-var toaster = new computer(
+var toaster = new computer( 
   {
     hostName:"toaster",
     operatingSystem: 'linux',
@@ -137,16 +130,14 @@ var toaster = new computer(
   },
   {
     file_count: 13,
-  	file_size: 44,
+    file_size
+    : 44,
+  	//file_size:,
+    //44
   	system_type: 2
   }
-
 )
-
-
-
-
-
+// toaster.system_props[file_size] : 44
 var voiceAssistant = new computer(
   {
     hostName:"voiceAssistant",
@@ -165,11 +156,6 @@ var voiceAssistant = new computer(
   	system_type: 3
   }
 )
-
-
-
-
-
 var printer = new computer(
   {
     hostName:"printer",
@@ -188,26 +174,103 @@ var printer = new computer(
     system_type: 4
   }
 )
-/*This defines a honeyhub.
+var fridge = new computer(
+  {
+    hostName:"fridge",
+    operatingSystem: 'linux',
+  	open_ports: ['22']
+  },
+  {
+    ssid: "ssid",
+  	pksd: "pksd",
+  	ipv4: [192, 168, 1, 1],
+ 		location: "US"
+  },
+  {
+    file_count: 7,
+  	file_size: 33.6,
+  	system_type: 1
+  }
+)
+//Digital copies for update refrences
+var toasterMaster = new computer(
+  {
+    hostName:"toaster",
+    operatingSystem: 'linux',
+  	open_ports:['24']
+  },
+  {
+    ssid: "ssid",
+  	pksd: "pksd",
+  	ipv4: [192, 168, 1, 2],
+  	location: "US"
+  },
+  {
+    file_count: 13,
+  	file_size: 44,
+  	system_type: 2
+  }
 
-*/
-
-// honeyhub.(printer.system_props.file_size,printer.system_props.file_count)
-// console.log(printer.system_props.file_size*printer.system_props.file_count)
-
-
-
-
+)
+var voiceAssistantMaster = new computer(
+  {
+    hostName:"voiceAssistant",
+    operatingSystem: 'linux',
+  	open_ports: ['24']
+  },
+  {
+    ssid: "ssid",
+  	pksd: "pksd",
+  	ipv4: [192, 168, 1, 3],
+  	location: "US"
+  },
+  {
+    file_count: 2,
+  	file_size: 10,
+  	system_type: 3
+  }
+)
+var printerMaster = new computer(
+  {
+    hostName:"printer",
+    operatingSystem: 'linux',
+    open_ports: ['24']
+  },
+  {
+    ssid: "ssid",
+    pksd: "pksd",
+    ipv4: [192, 168, 1, 4],
+    location: "US"
+  },
+  {
+    file_count: 2,
+    file_size: 64,
+    system_type: 4
+  }
+)
+var fridgeMaster = new computer(
+  {
+    hostName:"fridge",
+    operatingSystem: 'linux',
+  	open_ports: ['22']
+  },
+  {
+    ssid: "ssid",
+  	pksd: "pksd",
+  	ipv4: [192, 168, 1, 1],
+ 		location: "US"
+  },
+  {
+    file_count: 7,
+  	file_size: 33.6,
+  	system_type: 1
+  }
+)
 
 // returns a number b/w 0 and 255
 function randIpAddressPartial () {
   return Math.floor(Math.random() * 255);
 }
-
-
-
-
-
 // gives a random non-local ip-address
 function generateIpAddress () {
   var ipAddress = [
@@ -230,13 +293,7 @@ function generateIpAddress () {
   return ipAddress;
 }
 
-
-
-
 /*this defines a network */
-
-
-
 
 class network extends computer{
   constructor(computers,dev_props, net_props, system_props){
@@ -260,23 +317,11 @@ class network extends computer{
     }
   }
 }
-
-
-
-
-
 class honeyhub extends network {
   constructor(computers,dev_props, net_props, system_props) {
     super(computers,dev_props,net_props,system_props);
-    this.honeyKey = this.system_props.file_size * this.system_props.file_count
-  }
-  keyGener(){
-    return this.honeyKey;
   }
 }
-
-
-
 
 
 var honeyHub = new honeyhub([fridge,toaster,voiceAssistant,printer],
@@ -296,10 +341,6 @@ var honeyHub = new honeyhub([fridge,toaster,voiceAssistant,printer],
     file_size: 64,
     system_type: 5
   })
-
-
-
-
 class router extends network{
   constructor(computers,dev_props, net_props, system_props){
     super(computers,dev_props, net_props, system_props);
@@ -319,14 +360,6 @@ class router extends network{
     }
   }
 }
-
-
-
-
-
-
-
-
 var computers = [fridge,toaster,voiceAssistant,printer,honeyHub]
 var honeyNetwork = new router(computers,{
     hostName:"honeyhub",
@@ -343,7 +376,8 @@ var honeyNetwork = new router(computers,{
     file_count: 2,
     file_size: 64,
     system_type: 5
-  })
+  }
+  )
 
 /* FRONT END STUFF */
 
@@ -366,110 +400,39 @@ function updateDetails(deviceName) {
 	"<br>Location: " + deviceName.network_props.location +
 	"<br>File Count: " + deviceName.system_props.file_count +
 	"<br>File Size: " + deviceName.system_props.file_size +
-	"<br>System Type: " + deviceName.system_props.system_type
+	"<br>System Type: " + deviceName.system_props.system_type +
+  "<br>Honey Key: " + deviceName.keyGener()
 }
 
-// Turning on and off
+// I shoved all the game stuff onto a separate file
 
-var fridgeStatus = true
-
-var toggleFridge = document.querySelector('#toggleFridge')
-toggleFridge.onclick = function() {
-	fridge.toggleSwitch();
-}
-
-// Hacker options
-
-var level = 1;
-
-var displayGameLevel = document.querySelector('#gameLevel')
-var displayGameOptions = document.querySelector('#gameOptions')
-var displayHackerScreen = document.querySelector('#hackerScreen')
-var displayHoneyhubScreen = document.querySelector('#honeyhubScreen')
-var displayGameMove = document.querySelector('#nextLevel')
-//below is me making the dropdown menue selectable for the second level
-var fridge = document.querySelector("#fridge")
-var fridgeBtn = document.createElement("button")
-fridgeBtn.innerHTML = "Fridge"
-fridge.appendChild(fridgeBtn)
-var assistant = document.querySelector("#assistant")
-var assistBtn = document.createElement("button")
-assistBtn.innerHTML = "Assistant"
-assistant.appendChild(assistBtn)
-var toaster = document.querySelector("#toaster")
-var toastBtn = document.createElement("button")
-toastBtn.innerHTML = "Toaster"
-toaster.appendChild(toastBtn)
-var printer = document.querySelector("#printer")
-var printBtn = document.createElement("button")
-printBtn.innerHTML = "Printer"
-printer.appendChild(printBtn)
-//make into a game function
-// Level 0
-if (level === 0) {
-	displayGameLevel.innerText = "You come across a very vulnerable device in the network. It looks like it has a login page. What would you like to do?"
-  
-	var btn1 = document.createElement("BUTTON");
-	btn1.innerHTML = "Attempt to hack into the vulnerable login page."
-
-	displayGameOptions.appendChild(btn1)
-
-	btn1.onclick = function() {
-    level+=1
-		displayHackerScreen.innerHTML = "Hacking login page..."
-		setTimeout(() => { displayHackerScreen.innerHTML = "Account: <input  value='admin'><br> Password: <input value='admin'> <br> Successful Login!<br> Request Rejected By Client" }, 2000);
-    
-
-
-	}
-
-	// haha idk what options to add alrighty
-  //maybe hack into terminalthat could be level 1 since it is tougher
-  
-}
-
-else if (level === 1){
-
-  var btn2 = document.createElement("BUTTON");
-	btn2.innerHTML = "Attempt to hack into the terminal."
-	displayGameOptions.appendChild(btn2)
-  // var btn3 = document.createElement("button")
-  // btn3.innerHTML = "Fridge"
-  btn2.onclick = function(){
-    level+=1
-    displayHackerScreen.innerHTML = "Scanning for vulrable ports...."
-    setTimeout(()=> {displayHackerScreen.innerHTML = "Port 22<br> Accessed the ssh port!<br> Initiating device terimnal<br> "}, 2000)
-    setTimeout(()=> {displayHackerScreen.innerHTML = "Which device would you like to access"}, 6000)
-    fridgeBtn.onclick = function(){
-      displayHackerScreen.innerHTML = "Fridge"
-    }
-    toastBtn.onclick = function(){
-      displayHackerScreen.innerHTML = "Toaster"
-    }
-    assistBtn.onclick = function(){
-      displayHackerScreen.innerHTML = "Assistant"
-    }
-    printBtn.onclick = function(){
-      displayHackerScreen.innerHTML = "Printer"
-    }
-    displayHoneyhubScreen.innerHTML= "WARNING- MAIN SYSTEM SUBVERTED"
-
+// Link to other scripts
+var assistantHashMaster = voiceAssistantMaster.keyGener()
+var toasterHashMaster = toasterMaster.keyGener()
+var fridgeHashMaster =  fridgeMaster.keyGener()
+var printerHashMaster = printerMaster.keyGener()
+function returnHash(device){
+  switch(device){
+    case ("assistant"):
+      return voiceAssistant.keyGener()
+    case ("toaster"):
+      return toaster.keyGener()
+    case ("refrigerator"):
+      return fridge.keyGener()
+    case ("printer"):
+      return printer.keyGener()
   }
 }
-function myFunction() {
-  document.getElementById("myDropdown").classList.toggle("show");
-}
 
-// Close the dropdown menu if the user clicks outside of it
-window.onclick = function(event) {
-  if (!event.target.matches('.dropbtn')) {
-    var dropdowns = document.getElementsByClassName("dropdown-content");
-    var i;
-    for (i = 0; i < dropdowns.length; i++) {
-      var openDropdown = dropdowns[i];
-      if (openDropdown.classList.contains('show')) {
-        openDropdown.classList.remove('show');
-      }
-    }
-  }
-} 
+loadScript('game.js');
+
+
+
+
+
+
+
+
+
+
+
